@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>Create Blog</h1>
+    <h1>Create Product</h1>
     <form v-on:submit.prevent="createBlog">
       <p>title: <input type="text" v-model="blog.title" /></p>
       <transition name="fade">
-		<div class="thumbnail-pic" v-if="blog.thumbnail != 'null'">
-			<img :src="BASE_URL + blog.thumbnail" alt="thumbnail" />
-		</div>
-	  </transition>
+      <div class="thumbnail-pic" v-if="blog.thumbnail != 'null'">
+        <img :src="BASE_URL + blog.thumbnail" alt="thumbnail" />
+      </div>
+	    </transition>
       <form enctype="multipart/form-data" novalidate>
         <div class="dropbox">
           <input
@@ -40,25 +40,24 @@
                 alt="picture image"
               />
               <button v-on:click.prevent="delFile(picture)">Delete</button>
-			  <button v-on:click.prevent="useThumbnail(picture.name)">Thumbnail</button>
+			  <button v-on:click.prevent="useThumbnail(picture.name)">Send</button>
             </li>
           </ul>
           <div class="clearfix"></div>
         </div>
       </form>
       <p><strong>content:</strong></p>
-      <p>
         <vue-ckeditor
           v-model.lazy="blog.content"
           :config="config"
           @blur="onBlur($event)"
           @focus="onFocus($event)"
         />
-      </p>
-
       <p>category: <input type="text" v-model="blog.category" /></p>
-      <p>status: <input type="text" v-model="blog.status" /></p>
-      <p><button type="submit">create blog</button></p>
+      <p>gen: <input type="text" v-model="blog.gen" /></p>
+      <p>price: <input type="text" v-model="blog.price" /></p>
+      <p>brand: <input type="text" v-model="blog.brand" /></p>
+      <p><button type="submit">Create Product</button></p>
     </form>
   </div>
 </template>

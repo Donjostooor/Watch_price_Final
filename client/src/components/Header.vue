@@ -1,39 +1,55 @@
 <template>
-	<div>
-		<div class="nv-navbar">
-			<ul class="nav">
-				<li><router-link :to="{ name: 'blogs' }">Blogs</router-link></li>
-				<li><router-link :to="{ name: 'users' }">Users</router-link></li>
-				<li><router-link :to="{ name: 'comments' }">Comments</router-link></li>
-				<li><router-link :to="{ name: 'login' }">Login</router-link></li>
-				<li><router-link :to="{ name: 'blogs' }">Blogs</router-link></li>
-			</ul>
-			<div class="clearfix" />
+		<div>
+			<div class="container">
+			<div><h1>PriceWatch Wiki</h1></div>
+			</div>
+			<div class="nv-navbar">
+				<ul class="nav">
+					<li><router-link :to="{ name: 'index' }">Home</router-link></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li><router-link :to="{ name: 'blogs' }">ManagerContent</router-link></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				</ul>
+				<div class="clearfix" />
+			</div>
 		</div>
-	</div>
 </template>
 <script>
-export default {};
+import BlogsService from "@/services/BlogsService";
+export default {
+	methods: {
+		logout() {
+			this.$store.dispatch("setToken", null);
+			this.$store.dispatch("setBlog", null);
+			this.$router.push({
+				name: "login",
+			});
+			window.location.replace("Login.vue")
+		},
+	}
+};
 </script>
 <style scoped>
 .nv-navbar {
-	background-color: palegoldenrod;
+	background-color: rgb(143, 141, 250);
 	width: 100%;
-	padding: 10px 0px 10px 0px;
+	border-radius: 50px;
+	padding: 11px 0px 11px 30px;
 }
 .nv-navbar .nav {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	float: left;
+	float: center;
 }
 .nv-navbar .nav li {
-	float: left;
+	float: center;
 }
 .nv-navbar .nav li a {
+	border-radius: 50px;
 	padding: 10px;
 	text-decoration: none;
-	color: grey;
+	color: rgb(0, 0, 0);
 	font-weight: bold;
 }
 .nv-navbar .nav li a:hover {
@@ -42,10 +58,10 @@ export default {};
 	color: darkslategrey;
 }
 .nv-navbar .nav li a.router-link-active {
-	background-color: gold;
+	background-color: rgb(245, 245, 245);
 	color: darkslategrey;
 }
 .clearfix {
-	clear: left;
+	clear: center;
 }
 </style>

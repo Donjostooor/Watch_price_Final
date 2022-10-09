@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Edit Blog</h1>
+    <h1>Edit Product</h1>
     <form v-on:submit.prevent="editBlog">
       <p>title: <input type="text" v-model="blog.title" /></p>
 
@@ -42,7 +42,7 @@
               />
               <button v-on:click.prevent="delFile(picture)">Delete</button>
               <button v-on:click.prevent="useThumbnail(picture.name)">
-                Thumbnail
+                Send
               </button>
             </li>
           </ul>
@@ -51,17 +51,16 @@
       </form>
 
       <p><strong>content:</strong></p>
-      <p>
         <vue-ckeditor
           v-model.lazy="blog.content"
           :config="config"
           @blur="onBlur($event)"
           @focus="onFocus($event)"
         />
-      </p>
-
       <p>category: <input type="text" v-model="blog.category" /></p>
-      <p>status: <input type="text" v-model="blog.status" /></p>
+      <p>gen: <input type="text" v-model="blog.gen" /></p>
+      <p>price: <input type="text" v-model="blog.price" /></p>
+      <p>brand: <input type="text" v-model="blog.brand" /></p>
       <p>
         <button type="submit">update blog</button>
         <button v-on:click="navigateTo('/blogs')">กลับ</button>
